@@ -3,7 +3,10 @@
 @section('content')
 <div class="top-view">
     <h1>新しい旅を見つけよう！</h1>
-    ***検索バー
+    <div class="search">
+        <input type="search" placeholder="地名で旅先を検索" name="search">
+        <button type="submit">検索</button>
+    </div>
 </div>
 <div class="top-new">
     <h2>新着記事</h2>
