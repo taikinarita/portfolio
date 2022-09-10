@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('app_users', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
+            $table->id('user_id');
             $table->string('user_name')->nullable(false);
             $table->string('email')->nullable(false);
             $table->string('password')->nullable(false);
@@ -27,7 +27,6 @@ return new class extends Migration
             $table->integer('bookmark')->nullable();
             $table->timestamps();
 
-            $table->primary('user_id');
             $table->unique(['email']);
         });
     }
