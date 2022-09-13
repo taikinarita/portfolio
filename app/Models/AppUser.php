@@ -15,4 +15,6 @@ class AppUser extends Model
      * @var string
      */
     protected $primaryKey = 'user_id';
+
+    
 }

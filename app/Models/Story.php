@@ -15,4 +15,10 @@ class Story extends Model
      * @var string
      */
     protected $primaryKey = 'story_id';
+
+    // サムネ用情報取得
+    public function thumbnail () 
+    {
+        
+    }
 }
