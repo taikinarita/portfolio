@@ -35,6 +35,7 @@ class StoryFactory extends Factory
             'main_image' => fake()->imageUrl(640, 480, 'animals', true),
             'main_impression' => fake()->realText(),
             'remarks' => fake()->realText(),
+            'public_status' => random_int(0,1),
         ];
     }
 }

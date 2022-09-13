@@ -16,6 +16,6 @@ class StoryScheduleSeeder extends Seeder
     public function run()
     {
         //
-        StorySchedule::factory()->count(100)->create();
+        StorySchedule::factory()->count(1000)->create();
     }
 }

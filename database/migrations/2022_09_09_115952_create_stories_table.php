@@ -20,10 +20,12 @@ return new class extends Migration
             $table->integer('type')->nullable(false);
             $table->string('date_first')->nullable();
             $table->string('date_last')->nullable();
+            $table->string('period')->nullable();
             $table->integer('number_of_people')->nullable();
             $table->text('main_image')->nullable();
             $table->text('main_impression')->nullable();
             $table->text('remarks')->nullable();
+            $table->integer('public_status')->nullable(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('user_id')->on('app_users');
