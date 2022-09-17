@@ -23,10 +23,29 @@ class AppController extends Controller
 
     public function create1()
     {
-
+        // 本来、ログイン情報からユーザーIDを拾う、一旦user_id = 1で代用
+        $user_id = 1;
+        return view('create1', ['user_id' => $user_id]);
     }
 
-    public function store1(){
-        
+    public function store1(Request $request){
+        // バリデーション
+        // $this->validate($request, Story::$rules);
+
+        $story = new Story;
+        $form = $request->all();
+        unset($form['_token']);
+        $story->fill($form)->save();
+        // // 保存して終了を押下したらー＞ひとまずindexへ
+        if($form['button'] === 'finish')
+        {
+            return view('index');
+        }
+        // // 保存して次のステップへを押下したら
+        if ($form['button'] === 'finish')
+        {
+            $story_id = $form['story_id'];
+            return view('/create2', ['story_id' => $story_id]);
+        }
     }
 }

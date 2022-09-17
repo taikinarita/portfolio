@@ -16,6 +16,8 @@ class Story extends Model
      */
     protected $primaryKey = 'story_id';
 
+    protected $guarded = array('story_id');
+
     // サムネ用情報取得
     public function thumbnail () 
     {

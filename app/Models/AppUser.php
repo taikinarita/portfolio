@@ -16,5 +16,7 @@ class AppUser extends Model
      */
     protected $primaryKey = 'user_id';
 
+    protected $guarded = array('user_id');
+
     
 }

@@ -15,6 +15,8 @@ use App\Http\Controllers\AppController;
 */
 
 Route::get('/index', [AppController::class, 'index']);
+Route::get('/create1', [AppController::class, 'create1'])->name('create1');
+Route::post('/create1', [AppController::class, 'store1'])->name('create1');
 
 // Route::get('/user_record', [AppController::class, 'index']);
 

@@ -14,4 +14,6 @@ class StoryMainPicture extends Model
      * @var string
      */
     protected $primaryKey = 'story_main_picture_id';
+
+    protected $guarded = array('story_main_picture_id');
 }

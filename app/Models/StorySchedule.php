@@ -14,4 +14,6 @@ class StorySchedule extends Model
      * @var string
      */
     protected $primaryKey = 'story_schedule_id';
+
+    protected $guarded = array('story_schedule_id');
 }

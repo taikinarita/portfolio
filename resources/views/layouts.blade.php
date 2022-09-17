@@ -12,7 +12,7 @@
             <h1><a href="index.php" class="header-logo">＊＊＊仮ロゴ</a></h1>
             <ul class="header-right">
                 <li><a href="">旅記録を見る</a></li>
-                <li><a href="">旅記録を書く</a></li>
+                <li><a href="{{ route('create1') }}">旅記録を書く</a></li>
                 <li><a href="">ログイン</a></li>
                 <li><a href="">新規登録</a></li>
             </ul>
