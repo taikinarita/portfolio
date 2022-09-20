@@ -1,3 +1,9 @@
+##laravelで作成中の旅行記録サイトです。<br>
+長期旅行の旅路の記録の作成と他者が作成した記録の閲覧を行うサイトです。<br>
+現在、旅行記録のCRUD機能を作成しております。また、フロントエンドにはほぼ手をつけられていません。<br>
+今後の作業目標として、バックエンドの完成（ログイン機能、認証、マイページ機能）、フロントエンド（css・JavaScript）、テスト、デプロイを考えております。<br>
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
