@@ -28,7 +28,11 @@
                     <p class="item_thumbnail_header_p">{{$new_post->number_of_people}}</p>
                 </div>
                 <h3 class="item_thumbnail_header_title"><a href="">{{$new_post->title}}</a></h3>
-                <p class="item_thumbnail_header_p"></p>
+                <p class="item_thumbnail_header_p">
+                    @foreach($new_post->story_schedule as $schedule)
+                    <span>{{ $schedule->place_name }}</span>
+                    @endforeach
+                </p>
                 <div class="item_thumbnail_footer">
                     <p class="item_thumbnail_header_p">{{$new_post->date_first}} - {{$new_post->date_last}}</p>
                     <p class="item_thumbnail_header_p">{{$new_post->user_name}}</p>

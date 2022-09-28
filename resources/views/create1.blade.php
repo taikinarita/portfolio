@@ -46,6 +46,10 @@
             <label for="main_image" class="create_form_label">トップ画像</label>
             <input type="file" name="main_image">
         </div>
+        {{-- ユーザーIDの設定 --}}
+        <input type="hidden" name="user_id" value="{{ $user_id }}">
+        {{-- public_status = 0の設定 --}}
+        <input type="hidden" name="public_status" value="0">
     </div>
     <div class="create_form_button_wrapper">
         <button type="submit" name="button" value="finish" class="create_form_button">保存して終了</button>

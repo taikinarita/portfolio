@@ -16,4 +16,14 @@ class StoryPickUpImage extends Model
     protected $primaryKey = 'story_pick_up_image_id';
 
     protected $guarded = array('story_pick_up_image_id');
+
+    public function story_pick_up_image () 
+    {
+        return $this->hasMany('App\Models\StoryPickUpImage', 'story_pick_up_memory_id', 'story_pick_up_memory_id');
+    }
+
+    public function story () 
+    {
+        return $this->belongsTo('App\Models\Story', 'story_id', 'story_id');
+    }
 }

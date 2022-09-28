@@ -11,14 +11,15 @@ class AppController extends Controller
     //
     public function index()
     {
-     $new_posts = Story::leftjoin('story_schedules', 'stories.story_id', '=', 'story_schedules.story_id')
-        ->leftjoin('app_users', 'app_users.user_id', '=', 'stories.user_id')
-        ->select('user_name', 'stories.story_id', 'title', 'type', 'date_first', 'date_last', 'number_of_people', 'main_image', 'order', 'place_name')
+    $stories = new Story();
+    $new_posts = $stories->with('story_schedule')
         ->limit(3)
         ->orderBy('stories.created_at', 'desc', 'order')
         ->get();
+    // $new_posts_story_schedules = $new_posts_stories->story_schedule();
 
     return view('index', ['new_posts' => $new_posts]);
+    // return view('index', ['new_posts_stories' => $new_posts_stories, 'new_posts_story_schedules' => $new_posts_story_schedules]);
     }
 
     public function create1()
@@ -28,24 +29,72 @@ class AppController extends Controller
         return view('create1', ['user_id' => $user_id]);
     }
 
-    public function store1(Request $request){
+    // public function store1(Request $request){
+    //     // バリデーション
+    //     // $this->validate($request, Story::$rules);
+
+    //     $story = new Story;
+    //     $story->user_id = $request->user_id;
+    //     $story->title = $request->title;
+    //     $story->title = $request->place_name
+
+
+    //     // INSERT＆DBに登録した旅記録のstory_idを取得
+    //     $story_id = $story->save()->insertGetId('');
+        
+    //     $story_schedule = new StorySchedule;
+    //     $story_schedule->title = $request->place_name;
+
+
+    //     $form = $request->all();
+    //     unset($form['_token']);
+    //     $story->fill($form)->save();
+    //     // 画像を保存
+    //     $dir = 'main_image';
+    //     $request->file('main_image')->store('public/'.$dir);
+    //     // // 保存して終了を押下したらー＞ひとまずindexへ
+    //     if($form['button'] === 'finish')
+    //     {
+    //         return redirect()->route('index');
+    //     }
+    //     // // 保存して次のステップへを押下したら
+    //     if ($form['button'] === 'continue')
+    //     {
+    //         $story_id = $form['story_id'];
+    //         return view('create2', ['story_id' => $story_id]);
+    //         return redirect()->route('create2')->with(['story_id' => $story_id]);
+    //     }
+    // }
+
+    public function create2(Request $request)
+    {
+        $story_id = $request->session()->get('story_id');
+        return view('create2', ['story_id' => $story_id]);
+    }
+
+    public function store2(Request $request){
         // バリデーション
         // $this->validate($request, Story::$rules);
 
-        $story = new Story;
+        $story = Story::find($request->story_id);
         $form = $request->all();
         unset($form['_token']);
         $story->fill($form)->save();
         // // 保存して終了を押下したらー＞ひとまずindexへ
         if($form['button'] === 'finish')
         {
-            return view('index');
+            return redirect()->route('index');
         }
-        // // 保存して次のステップへを押下したら
-        if ($form['button'] === 'finish')
-        {
-            $story_id = $form['story_id'];
-            return view('/create2', ['story_id' => $story_id]);
+        // // 公開するを押下したら
+        if ($form['button'] === 'public')
+        {   $public_status = ['public_status' => 1];
+            $story->fill($form)->save();
+            return redirect()->route('create_complete');
         }
+    }
+
+    public function create_complete()
+    {
+        return view('create_complete');
     }
 }

@@ -16,4 +16,9 @@ class StoryMainPicture extends Model
     protected $primaryKey = 'story_main_picture_id';
 
     protected $guarded = array('story_main_picture_id');
+
+    public function story () 
+    {
+        return $this->belongsTo('App\Models\Story', 'story_id', 'story_id');
+    }
 }

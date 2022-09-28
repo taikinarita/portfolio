@@ -16,4 +16,9 @@ class StoryPickUpMemory extends Model
     protected $primaryKey = 'story_pick_up_memory_id';
 
     protected $guarded = array('story_pick_up_memory_id');
+
+    public function story_pick_up_memory () 
+    {
+        return $this->belongsTo('App\Models\StoryPickUpMemory', 'story_pick_up_memory_id', 'story_pick_up_memory_id');
+    }
 }
