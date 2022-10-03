@@ -3,19 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Story;
-use App\Models\StorySchedule;
+use App\Repositories\App\AppRepositoryInterface as AppRepository;
+
 
 class AppController extends Controller
 {
     //
+    /**
+     * @var AppRepository
+     */
+    private $appRepository;
+
+    public function __construct(AppRepository $appRepository) {
+        $this->appRepository = $appRepository;
+    }
+
     public function index()
     {
-    $stories = new Story();
-    $new_posts = $stories->with('story_schedule')
-        ->limit(3)
-        ->orderBy('stories.created_at', 'desc', 'order')
-        ->get();
+    $new_posts = $this->appRepository->storySumbnailNew3();
     // $new_posts_story_schedules = $new_posts_stories->story_schedule();
 
     return view('index', ['new_posts' => $new_posts]);
